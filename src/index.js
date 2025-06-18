@@ -1,7 +1,15 @@
 import express from 'express';
 import actDatosRoutes from './routes/actualizar-datos.routes.js';
 import aumentoCupoRoutes from './routes/aumento-cupo.routes.js';
-import {PORT} from './config.js'
+import {
+  DB_DATABASE,
+  DB_HOST,
+  DB_PASSWORD,
+  DB_PORT,
+  DB_USER,
+  PORT
+} from "./config.js";
+import { config } from 'dotenv';
 
 const app = express();
 
@@ -18,10 +26,18 @@ app.use(cors(corsOptions));*/
 
 const ValidateHeaders=(req,res,next)=>{
     
+
+
     const authorizationHeader = req.headers['authorization'];
     const SantanderHeader = req.headers['x-santander-client-id'];
     if (!SantanderHeader || !authorizationHeader || !authorizationHeader.startsWith('Bearer ')){
-        return res.status(503).json({message:'The server is currenty unable to handle the request.', request:req.headers});
+        return res.status(503).json({message:'The server is currenty unable to handle the request.', request:req.headers,
+            variables: {DB_DATABASE,
+  DB_HOST,
+  DB_PASSWORD,
+  DB_PORT,
+  DB_USER}
+        });
     }
 
     next();
