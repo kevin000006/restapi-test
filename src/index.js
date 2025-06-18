@@ -8,14 +8,14 @@ const app = express();
 
 app.use(express.json());
 
-const corsOptions = {
+/*const corsOptions = {
     origin: 'http://localhost:4200',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: false, 
     optionsSuccessStatus: 204
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions));*/
 
 const ValidateHeaders=(req,res,next)=>{
     
