@@ -19,9 +19,9 @@ router.get('/Customer_Offer/Card_Limit_Increase_Request/v1/campaigns/:id',async 
         cardholderName: "**** **** **** 0617",
         cardUserName: "Diego A. Reyes",
         cardNumber: "1234 4321 5698 0617",
-        currentQuota: "300",
-        minimumQuota: "100",
-        maximumQuota: "500"
+        currentQuota: "300000",
+        minimumQuota: "100000",
+        maximumQuota: "500000"
     };
 
      setTimeout(() => {
