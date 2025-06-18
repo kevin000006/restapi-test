@@ -1,5 +1,4 @@
 import express from 'express';
-import cors from 'cors';
 import actDatosRoutes from './routes/actualizar-datos.routes.js';
 import aumentoCupoRoutes from './routes/aumento-cupo.routes.js';
 import {PORT} from './config.js'
