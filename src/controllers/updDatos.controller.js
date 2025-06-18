@@ -15,3 +15,7 @@ export const getContextSesion=(req, res)=>{
         "isPlard": true 
     });
 };
+
+
+
+
