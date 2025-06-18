@@ -22,7 +22,7 @@ const ValidateHeaders=(req,res,next)=>{
     const authorizationHeader = req.headers['authorization'];
     const SantanderHeader = req.headers['x-santander-client-id'];
     if (!SantanderHeader || !authorizationHeader || !authorizationHeader.startsWith('bearer ')){
-        return res.status(503).json({message:'The server is currenty unable to handle the request.'});
+        return res.status(503).json({message:'The server is currenty unable to handle the request.', request:req.headers});
     }
 
     next();
