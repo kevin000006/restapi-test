@@ -10,7 +10,7 @@ app.use(express.json());
 
 const allowedOrigins =[
     'http://localhost:4200',
-    'https://www.privado.officebanking-qa.cl'
+    'https://privado.officebanking-qa.cl'
 ];
 
 
