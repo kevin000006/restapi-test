@@ -28,6 +28,7 @@ const corsOptions = {
     optionsSuccessStatus: 204
 };
 
+
 app.use(cors(corsOptions));
 
 const ValidateHeaders=(req,res,next)=>{
