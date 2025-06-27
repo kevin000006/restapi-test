@@ -8,8 +8,21 @@ const app = express();
 
 app.use(express.json());
 
+const allowedOrigins =[
+    'http://localhost:4200',
+    'https://wwww.privado.officebanking-qa.cl'
+];
+
+
 const corsOptions = {
-    origin: 'http://localhost:4200',
+    origin: function(origin,callback){
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1){
+            const msg = 'La política de CORS para este sitio no permite el acceso desde el origen especificado.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: false, 
     optionsSuccessStatus: 204
