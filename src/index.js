@@ -33,11 +33,19 @@ app.use(cors(corsOptions));
 
 const ValidateHeaders=(req,res,next)=>{
     
-
-
-    const authorizationHeader = req.headers['authorization'];
     const SantanderHeader = req.headers['x-santander-client-id'];
-    if (!SantanderHeader || !authorizationHeader || !authorizationHeader.startsWith('Bearer ')){
+    const context_id = req.headers['x-context-id'];
+    const schema_id = req.headers['x-schema-id'];
+    const terminal_id = req.headers['x-terminal-id'];
+    const traceparent = req.headers['traceparent'];
+    const tracestate = req.headers['tracestate'];
+    const authorizationHeader = req.headers['authorization'];
+
+    const headerValid = (!SantanderHeader || !context_id || !schema_id || !terminal_id
+        || !traceparent || !tracestate || !authorizationHeader || !authorizationHeader.startsWith('Bearer ')
+    );
+    
+    if (headerValid){
         return res.status(503).json({message:'The server is currenty unable to handle the request.'});
     }
 

@@ -8,10 +8,9 @@ const router = Router();
 
 router.get('/Customer_Offer/Card_Limit_Increase_Request/v1/campaigns/:id',async (req,res)=>{
     const [response] = await getFlujoPaso(1);
-
      setTimeout(() => {
         if(response.esExitoso == 1){
-                res.status(200).json(getDataIinitContext);
+                res.status(200).json(response.resultado);
         }else{
             res.status(500).json({
                 code: 500,

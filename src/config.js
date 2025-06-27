@@ -9,7 +9,6 @@ export const DB_DATABASE = process.env.DB_DATABASE || "santander";
 export const DB_PORT = process.env.DB_PORT || 3306;
 */
 
-
 //Prod
 
 
