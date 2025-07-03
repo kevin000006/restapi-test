@@ -1,19 +1,10 @@
+import {pool} from '../db.js';
 
+export const getFlujoPaso = async(idFlujo)=>{
 
-export const getContextSesion=(req, res)=>{
+    const [rows] = await pool.query('select * from flujo where proyecto = "MD" && codflujo=?',idFlujo);
+    return rows;
 
-        res.json({
-        "userId": "string",
-        "contract": "string",
-        "companyId": "string",
-        "role": 4,
-        "userName": "string",
-        "companyName": "string",
-        "phoneNumber": "string",
-        "email": "string",
-        "isMultiCompany": true,
-        "isPlard": true 
-    });
 };
 
 

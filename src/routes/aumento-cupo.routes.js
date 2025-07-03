@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {getFlujoPaso,getDataIinitContext, getDocumentRASE,getDataConfirmacion} from '../controllers/aumento-cupo.controller.js';
+import {getFlujoPaso, getDocumentRASE,getDataConfirmacion} from '../controllers/aumento-cupo.controller.js';
 
 const router = Router();
 
@@ -50,9 +50,7 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/generate-challenge',
 
      setTimeout(() => {
         if(response.esExitoso == 1){
-                res.status(200).json({
-                    challenge: "desafio activo"
-                });
+                res.status(200).json(response.resultado);
         }else{
             res.status(500).json({
                 code: 500,
@@ -71,7 +69,7 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
 
      setTimeout(() => {
         if(response.esExitoso == 1){
-                res.status(200).json(getDataConfirmacion);
+                res.status(200).json(response.resultado);
         }else{
             res.status(500).json({
                 code: 500,
