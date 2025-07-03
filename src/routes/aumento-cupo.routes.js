@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {getFlujoPaso, getDocumentRASE,getDataConfirmacion} from '../controllers/aumento-cupo.controller.js';
+import {getFlujoPaso, getDocumentRASE} from '../controllers/aumento-cupo.controller.js';
 
 const router = Router();
 
