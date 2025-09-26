@@ -78,7 +78,7 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
         }else{
             let jsonRespuesta = {};
             let ValidateStatus = '';
-
+            
             if(response.esExitoso == 1){
                 console.log(response.resultado);
                 response.resultado['documentVoucher'] = getDocumentRASE.documento;
@@ -97,6 +97,7 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
                 res.status(204);
             }
             res.set('ValidateStatus',ValidateStatus);
+            res.setHeader('Access-Control-Expose-Headers', 'ValidateStatus');
             res.json(jsonRespuesta);
         }
     },response.timeOut);
