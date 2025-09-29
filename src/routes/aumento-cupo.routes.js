@@ -18,6 +18,13 @@ router.get('/Customer_Offer/Card_Limit_Increase_Request/v1/campaigns/:id',async 
                 level: "Error",
                 description: "An unexpected error occurred oan the server."
             });
+        }else  if(response.esExitoso == -2){
+             res.status(409).json({
+                code: 409,
+                message: "Bad request",
+                level: "Error",
+                description: "An unexpected error occurred oan the server."
+            });
         }else{
             res.status(500).json({
                 code: 500,
@@ -39,6 +46,13 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/document-rase', asyn
                 res.status(200).json({
                     document: getDocumentRASE.documento
                 });
+        }else  if(response.esExitoso == -2){
+             res.status(409).json({
+                code: 409,
+                message: "Bad request",
+                level: "Error",
+                description: "An unexpected error occurred oan the server."
+            });
         }else  if(response.esExitoso == -1){
              res.status(400).json({
                 code: 400,
@@ -72,6 +86,13 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/generate-challenge',
                 level: "Error",
                 description: "An unexpected error occurred oan the server."
             });
+        }else  if(response.esExitoso == -2){
+             res.status(409).json({
+                code: 409,
+                message: "Bad request",
+                level: "Error",
+                description: "An unexpected error occurred oan the server."
+            });
         }else{
             res.status(500).json({
                 code: 500,
@@ -99,6 +120,13 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
         }else  if(response.esExitoso == -1){
              res.status(400).json({
                 code: 400,
+                message: "Bad request",
+                level: "Error",
+                description: "An unexpected error occurred oan the server."
+            });
+        }else  if(response.esExitoso == -2){
+             res.status(409).json({
+                code: 409,
                 message: "Bad request",
                 level: "Error",
                 description: "An unexpected error occurred oan the server."
