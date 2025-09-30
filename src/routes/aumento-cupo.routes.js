@@ -127,9 +127,9 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
         }else  if(response.esExitoso == -2){
              res.status(409).json({
                 code: 409,
-                message: "Bad request",
-                level: "Error",
-                description: "An unexpected error occurred oan the server."
+                message: "Conflict",
+                level: "ERROR",
+                description: "USER_HAS_NO_CHALLENGE"
             });
         } else{
             let jsonRespuesta = {};
@@ -139,22 +139,19 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
                 console.log(response.resultado);
                 response.resultado['documentVoucher'] = getDocumentRASE.documento;
                 jsonRespuesta = response.resultado;
-
-                ValidateStatus = 'CONFIRM';
                 res.status(200);
             }else if(response.esExitoso == 2) // CANCELED_CHALLENGE
             {
-                ValidateStatus = 'CANCELED_CHALLENGE';
-                res.status(204);
+                res.status(206).json({                   
+                    validateStatus: "CANCELED_CHALLENGE"                    
+                });
             }
             else if(response.esExitoso == 3) //NOT_AVAILABLE_YET
             {
-                ValidateStatus = 'NOT_AVAILABLE_YET';
-                res.status(204);
-            }
-            res.set('ValidateStatus',ValidateStatus);
-            res.setHeader('Access-Control-Expose-Headers', 'ValidateStatus');
-            res.json(jsonRespuesta);
+                 res.status(206).json({                   
+                    validateStatus: "NOT_AVAILABLE_YET"                    
+                });
+            }           
         }
     },response.timeOut);
 
