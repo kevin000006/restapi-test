@@ -139,7 +139,8 @@ router.post('/Customer_Offer/Card_Limit_Increase_Request/v1/validate-challenge',
                 console.log(response.resultado);
                 response.resultado['documentVoucher'] = getDocumentRASE.documento;
                 jsonRespuesta = response.resultado;
-                res.status(200);
+                res.status(200).json(jsonRespuesta);
+
             }else if(response.esExitoso == 2) // CANCELED_CHALLENGE
             {
                 res.status(206).json({                   
