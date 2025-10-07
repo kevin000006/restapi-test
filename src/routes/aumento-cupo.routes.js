@@ -25,7 +25,56 @@ router.get('/Customer_Offer/Card_Limit_Increase_Request/v1/campaigns/:id',async 
                 level: "Error",
                 description: "An unexpected error occurred oan the server."
             });
-        }else{
+        }else if(response.esExitoso == -3) // usuario rol invalido
+        {
+             res.status(409).json({
+                errors:[
+                    {
+                        code: 409,
+                        message: "ERR_BOBCARDQUOTAINC_009",
+                        level: "Error",
+                        description: "User rol is not valid access"
+                    }
+                ]               
+            });
+        }else if(response.esExitoso == -4) // facultades error
+        {
+             res.status(409).json({
+                errors:[
+                    {
+                        code: 409,
+                        message: "ERR_BOBCARDQUOTAINC_011",
+                        level: "Error",
+                        description: "No tienes las facultades para solicitar aumento de cupo de tu tarjeta de crédito"
+                    }
+                ]               
+            });
+        }else if(response.esExitoso == -5) // usuario rol invalido
+        {
+             res.status(409).json({
+                errors:[
+                    {
+                        code: 409,
+                        message: "ERR_BOBCARDQUOTAINC_005",
+                        level: "Error",
+                        description: "Lo sentimos, necesitas Santander Pass para solicitar aumento de cupo de tu Tarjeta de Crédito"
+                    }
+                ]               
+            });
+        }else if(response.esExitoso == -6) // error mono tarjta semilla
+        {
+             res.status(409).json({
+                errors:[
+                    {
+                        code: 409,
+                        message: "ERR_BOBCARDQUOTAINC_029",
+                        level: "Error",
+                        description: "Error MonoTarjeta Semilla"
+                    }
+                ]               
+            });
+        }
+        else{
             res.status(500).json({
                 code: 500,
                 message: "Internal Server Error",
